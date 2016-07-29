@@ -1,0 +1,17 @@
+<h1>URL SHORTENER</h1>
+
+<p><%= alert %></p>
+
+<h3>Enter the url you want to shorten:</h3>
+
+<%= form_for @u, url: root_path do |u|%>
+  <%= u.label :long_url %>
+  <%= u.search_field :long_url %>
+  <%= u.submit "shorten url!"%>
+<% end %>
+
+<% if notice%>
+  <ul>
+    <li><%= link_to "#{request.host_with_port}/#{@u.shortened_url}", @u.long_url, :target => "_blank"%></li>
+  </ul>
+<% end %>
